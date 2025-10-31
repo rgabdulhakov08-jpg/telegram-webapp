@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бронирование домиков</title>
+<style>
+body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f7f7f7; }
+header { background: #4CAF50; color: white; text-align: center; padding: 15px; font-size: 24px; }
+.container { padding: 15px; }
+.card { background: white; border-radius: 8px; padding: 10px; margin-bottom: 15px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+.card img { width: 100%; border-radius: 8px; }
+button { background: #4CAF50; color: white; border: none; padding: 10px 15px; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+input, textarea { width: 100%; padding: 8px; margin: 5px 0; border-radius: 5px; border: 1px solid #ccc; }
+h2 { margin: 10px 0; }
+</style>
+</head>
+<body>
+
+<header>Домики</header>
+<div class="container" id="main">
+
+<!-- Карточки домиков -->
+<div class="card">
+  <img src="https://i.imgur.com/0KfbS3H.jpg" alt="Домик у озера">
+  <h2>🏡 Домик у озера</h2>
+  <p>Уютный домик на берегу озера. Цена: 5000₽</p>
+  <button onclick="showBooking('Домик у озера')">Забронировать</button>
+</div>
+
+<div class="card">
+  <img src="https://i.imgur.com/4aT0pKX.jpg" alt="Современный коттедж">
+  <h2>🏠 Современный коттедж</h2>
+  <p>Коттедж с джакузи и камином. Цена: 7000₽</p>
+  <button onclick="showBooking('Современный коттедж')">Забронировать</button>
+</div>
+
+</div>
+
+<script>
+function showBooking(houseName) {
+  document.getElementById('main').innerHTML = `
+    <h2>Бронирование: ${houseName}</h2>
+    <input type="text" id="name" placeholder="Ваше имя">
+    <input type="text" id="phone" placeholder="Телефон">
+    <input type="text" id="date" placeholder="Дата (ДД-ММ)">
+    <input type="number" id="guests" placeholder="Количество гостей">
+    <button onclick="submitBooking('${houseName}')">Отправить</button>
+    <button onclick="goBack()">Назад</button>
+  `;
+}
+
+function submitBooking(houseName) {
+  const name = document.getElementById('name').value;
+  const phone = document.getElementById('phone').value;
+  const date = document.getElementById('date').value;
+  const guests = document.getElementById('guests').value;
+
+  alert(`Спасибо, ${name}! Бронирование ${houseName} на ${date} для ${guests} гостей принято. Мы свяжемся с вами.`);
+  goBack();
+}
+
+function goBack() {
+  location.reload();
+}
+</script>
+
+</body>
+</html>
